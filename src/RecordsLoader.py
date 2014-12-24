@@ -1,7 +1,7 @@
 # Copyright 2014 Rico Antonio Felix
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
-# You may not use this file except in compliance with the License.
+# you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -27,14 +27,16 @@ class RecordsLoader:
 
         Checks that the argument 'database_file' passed in is of type 'str' else an 'Exception' is raised.
 
+        If the specified database file doesn't exist an 'Exception' is raised.
+
         :param database_file: Name of the database file to load records from
         :return: Dictionary data structure with the bank account records
         """
         if type(database_file) != str:
             raise Exception(
                 "Invalid argument: database_file of type {} should be: <class 'str'>".format(type(database_file)))
-        records = dict()
         database = DatabaseConnection(database_file)
+        records = dict()
         result_set = database.sql_statement(database.READ, "SELECT * FROM accounts")
         for record in result_set:  # grab each record from the result-set
             records[record[4]] = BankAccount(record[0], record[1], record[2], record[3])
