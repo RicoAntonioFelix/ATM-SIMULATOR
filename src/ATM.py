@@ -1,7 +1,7 @@
 # Copyright 2014 Rico Antonio Felix
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
-# You may not use this file except in compliance with the License.
+# you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -20,7 +20,7 @@ class ATM:
     """Primitive model of an ATM machine
 
     * Performs pin validation
-    * Contains a menu and keypad for user interaction
+    * Contains a menu and simulated keypad for user interaction
     """
 
     def __init__(self):
