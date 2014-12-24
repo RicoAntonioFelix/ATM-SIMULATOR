@@ -1,7 +1,7 @@
 # Copyright 2014 Rico Antonio Felix
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
-# You may not use this file except in compliance with the License.
+# you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -116,9 +116,9 @@ class BankAccount:
         self.__balance__ += amount if amount > 0 else 0
 
     def withdraw(self, amount):
-        """Decrements the current balance by the specified amount if its less than the current balance and returns the
-        specified amount. If amount specified is greater than the current balance, no operation is performed, the
-        balance remains unchanged and zero(0) is returned.
+        """Decrements the current balance by the specified amount if its less than or equal to the current balance and
+        returns the specified amount. If amount specified is greater than the current balance, no operation is
+        performed, the balance remains unchanged and zero(0) is returned.
 
         Checks that the argument passed in is of type 'int' else an 'Exception' is raised.
 
@@ -135,7 +135,11 @@ class BankAccount:
 
     def get_account_details(self):
         """Returns a string representation with the current state of the object which includes the
-        current account number, first name, last name and balance.
+        current account number, first name, last name and balance in the following format:
+
+        Account Number: [account_number]
+        Name: [first_name & last_name]
+        Balance: [balance]
 
         :return: String representation of the current state of the object
         """
