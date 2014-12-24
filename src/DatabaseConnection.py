@@ -1,7 +1,7 @@
 # Copyright 2014 Rico Antonio Felix
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
-# You may not use this file except in compliance with the License.
+# you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -12,11 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 import sqlite3
 
 
 class DatabaseConnection:
-    """This class is used an as application specific model of a database connection.
+    """This module is used an as application specific model of a database connection.
 
     Can be used to perform all database CRUD actions which allows you to do the following:
     -> Create new records in the connected database
@@ -47,12 +48,17 @@ class DatabaseConnection:
 
         Checks that the argument passed in is of type 'str' else an 'Exception' is raised.
 
+        If the specified database file doesn't exist an 'Exception' is raised.
+
         :param database_file: The local database file to connect to
         :return: An initialized object with a connection to the specified database
         """
         if type(database_file) != str:
             raise Exception(
                 "Invalid argument: database_file of type {} should be: <class 'str'>".format(type(database_file)))
+        if not os.path.exists(database_file):
+            raise Exception(
+                "Connection the to specified database {} could not be established: no such file".format(database_file))
         self.__database__ = sqlite3.connect(database_file)
         self.CREATE = 0
         self.READ = 1
@@ -62,8 +68,8 @@ class DatabaseConnection:
     def sql_statement(self, operation, sql):
         """Performs CRUD operations on the connected database.
 
-        Checks that the argument 'operation' passed in is valid else an 'Exception' is raised.
         Checks that the argument 'sql' passed in is of type 'str' else an 'Exception' is raised.
+        Checks that the argument 'operation' passed in is valid else an 'Exception' is raised.
 
         :param operation: Operation to perform on the connected database
         :param sql: SQL statement to transmit to the underlying database engine
