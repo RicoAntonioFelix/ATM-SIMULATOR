@@ -1,4 +1,4 @@
-ATM_Simulator
+ATM-SIMULATOR
 =============
 
 ATM Simulation Application
